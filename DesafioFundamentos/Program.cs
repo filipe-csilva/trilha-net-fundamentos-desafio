@@ -6,11 +6,14 @@ Console.OutputEncoding = System.Text.Encoding.UTF8;
 decimal precoInicial = 0;
 decimal precoPorHora = 0;
 
-Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
-                  "Digite o preço inicial:");
+Console.ForegroundColor = ConsoleColor.White;
+Console.Write("Seja bem vindo ao sistema de estacionamento!\n" +
+                  "Digite o preço inicial: ");
+Console.CursorVisible = true;
+
 precoInicial = Convert.ToDecimal(Console.ReadLine());
 
-Console.WriteLine("Agora digite o preço por hora:");
+Console.Write("Agora digite o preço por hora: ");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
 // Instancia a classe Estacionamento, já com os valores obtidos anteriormente
@@ -28,22 +31,23 @@ while (exibirMenu)
     Console.WriteLine("2 - Remover veículo");
     Console.WriteLine("3 - Listar veículos");
     Console.WriteLine("4 - Encerrar");
-
-    switch (Console.ReadLine())
+    Console.CursorVisible = false;
+    Console.ForegroundColor = ConsoleColor.Black;
+    switch (Convert.ToInt32(Console.ReadKey().KeyChar.ToString()))
     {
-        case "1":
+        case 1:
             es.AdicionarVeiculo();
             break;
 
-        case "2":
+        case 2:
             es.RemoverVeiculo();
             break;
 
-        case "3":
+        case 3:
             es.ListarVeiculos();
             break;
 
-        case "4":
+        case 4:
             exibirMenu = false;
             break;
 
@@ -52,8 +56,11 @@ while (exibirMenu)
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("Precione [ Enter ] para continuar...");
     Console.ReadLine();
+    
+    Console.CursorVisible = true;
 }
 
 Console.WriteLine("O programa se encerrou");
